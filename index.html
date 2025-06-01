@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2E7D32" />
+  <title>ecosíntese</title>
+</head>
+
+<body>
+  <main>
+    <div class="item">
+      <h3>TV</h3>
+      <img src="https://static.vecteezy.com/system/resources/previews/046/013/247/non_2x/black-tv-screen-with-blank-screen-free-png.png" alt="TV" />
+      <p>Consumo: 13,5 watts/h</p>
+      <section>
+        <input type="number" disabled id="displayTV" />
+        <section>
+          <button id="buttonMaisTV">+</button>
+          <button id="buttonMenosTV">-</button>
+        </section>
+      </section>
+    </div>
+
+    <div class="item">
+      <h3>Motor Elétrico Industrial</h3>
+      <img src="https://media.istockphoto.com/id/1398787159/pt/foto/cross-section-of-industrial-electric-motor-electric-motor-parts-and-structure-isolated-on.jpg?s=612x612&w=0&k=20&c=HehwD8hfIZpoQ5YhRuaDpTkw4ALwVibyftPnHGgG-Ng=" alt="Motor Elétrico Industrial" />
+      <p>Consumo: 1500 watts/h</p>
+      <section>
+        <input type="number" disabled id="displayMotor" />
+        <section>
+          <button id="buttonMaisMotor">+</button>
+          <button id="buttonMenosMotor">-</button>
+        </section>
+      </section>
+    </div>
+
+    <div class="item">
+      <h3>Iluminação LED Industrial</h3>
+      <img src="https://cdn.awsli.com.br/1816/1816580/produto/89329272/be4c8e6dde.jpg" alt="Iluminação LED Industrial" />
+      <p>Consumo: 100 watts/h (por unidade)</p>
+      <section>
+        <input type="number" disabled id="displayLED" />
+        <section>
+          <button id="buttonMaisLED">+</button>
+          <button id="buttonMenosLED">-</button>
+        </section>
+      </section>
+    </div>
+
+    <div class="item">
+      <h3>Compressor de Ar</h3>
+      <img src="https://cdn.awsli.com.br/800x800/321/321793/produto/39555250/ce45ba7480.jpg" alt="Compressor de Ar" />
+      <p>Consumo: 3000 watts/h</p>
+      <section>
+        <input type="number" disabled id="displayCompressor" />
+        <section>
+          <button id="buttonMaisCompressor">+</button>
+          <button id="buttonMenosCompressor">-</button>
+        </section>
+      </section>
+    </div>
+
+    <div class="item">
+      <h3>Câmara Fria Industrial</h3>
+      <img src="https://acdn-us.mitiendanube.com/stores/002/604/895/products/1059d458-de82-46a9-a3bb-48962a952c85-da42bd5b3b0628f82117374076927035-640-0.jpg" alt="Câmara Fria Industrial" />
+      <p>Consumo: 5000 watts/h</p>
+      <section>
+        <input type="number" disabled id="displayCamara" />
+        <section>
+          <button id="buttonMaisCamara">+</button>
+          <button id="buttonMenosCamara">-</button>
+        </section>
+      </section>
+    </div>
+
+    <button id="salvarBnt">Salvar</button>
+  </main>
+
+  <script type="module" src="funcoes.js"></script>
+  <script type="module" src="comunicacao.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
