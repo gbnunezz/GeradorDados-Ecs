@@ -1,12 +1,16 @@
 import { SalvarFirebase } from "./comunicacao.js";
-let consumo = [0, 0, 0, 0, 0];
+let consumo = [0, 0, 0, 0, 0,0,0,0,0];
 
 const equipamentos = [
     { nome: "TV", index: 0, consumo: 13.5 },
     { nome: "Motor", index: 1, consumo: 1500 },
     { nome: "LED", index: 2, consumo: 100 },
     { nome: "Compressor", index: 3, consumo: 3000 },
-    { nome: "Camara", index: 4, consumo: 5000 }
+    { nome: "Camara", index: 4, consumo: 5000 },
+    { nome: "Lâmpada", index: 5, consumo: 50},
+    { nome: "Monitor", index: 6, consumo: 30},
+    { nome: "CPU", index: 7, consumo: 150},
+    { nome: "Frigobar", index: 8, consumo: 50},
 ];
 
 equipamentos.forEach(({ nome, index }) => {
