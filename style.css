@@ -1,160 +1,305 @@
 /* style.css */
 
-* {
+/* 1. Variáveis de Tema */
+:root {
+    --color-bg-light: #f4f4f4;
+    --color-bg-dark: #1e1e1e;
+    --color-card-bg-light: #ffffff;
+    --color-card-bg-dark: #2a2a2a;
+    --color-text-light: #333333;
+    --color-text-dark: #e1e1e1;
+    --color-primary: #2E7D32;
+    --color-primary-hover: #27642b;
+    --color-secondary: #4CAF50;
+    --color-secondary-hover: #45a049;
+    --color-button-bg: #007BFF;
+    --color-button-hover: #0056b3;
+    --color-border: #cccccc;
+    --card-radius: 16px;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+    /* Limites de tamanho do card */
+    --card-max-width: 320px;   /* largura máxima de cada card */
+    --card-max-height: 400px;  /* altura máxima de cada card */
+  }
+  
+  /* 2. Suporte a Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg-light: var(--color-bg-dark);
+      --color-card-bg-light: var(--color-card-bg-dark);
+      --color-text-light: var(--color-text-dark);
+    }
+  }
+  
+  /* 3. Reset + Tipografia */
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f4f4f4;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-}
-
-main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.item {
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
+    font-family: var(--font-base);
+  }
+  
+  html, body {
+    height: 100%;
+    overflow-x: hidden;    /* Evita scroll horizontal */
+  }
+  
+  body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
-}
-
-.item:hover {
-    transform: translateY(-5px);
-}
-
-.item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    padding: var(--spacing-large);
+    line-height: 1.5;
+  }
+  
+  /* 4. Layout Principal */
+  main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-large);
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    flex-grow: 1;
+    padding: var(--spacing-medium);
+  
+    /* Espaço inferior para o botão fixo */
+    padding-bottom: calc(var(--spacing-large) + 4rem);
+  }
+  
+  /* 5. Estilo das Seções */
+  main > section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%; /* Garante que não ultrapasse */
+    padding: var(--spacing-medium);
+    border-radius: var(--card-radius);
+    background-color: rgba(0, 0, 0, 0.03);
+    transition: background-color var(--transition-medium);
+  }
+  main > section:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  main > section h2 {
     text-align: center;
-}
-
-.item img {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-large);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color var(--transition-fast);
+  }
+  main > section h2:hover {
+    color: var(--color-primary-hover);
+  }
+  
+  /* 6. Cartões (Itens) */
+  .item {
+    background-color: var(--color-card-bg-light);
+    border-radius: var(--card-radius);
+    box-shadow: 0 4px 12px var(--card-shadow);
+    padding: var(--spacing-large);
+    margin-bottom: var(--spacing-large);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform var(--transition-medium), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  
+    /* LIMITES DE TAMANHO */
+    max-width: var(--card-max-width);
+    width: 100%;
+    max-height: var(--card-max-height);
+    overflow: auto; /* Se o conteúdo ultrapassar a altura */
+  }
+  
+  .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px var(--card-shadow);
+  }
+  
+  .item h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-small);
+    text-align: center;
+    color: var(--color-text-light);
+  }
+  
+  /* 7. Imagem do Cartão */
+  .item img {
     width: 100%;
     max-height: 180px;
     object-fit: contain;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-medium);
     border-radius: 12px;
-}
-
-.item p {
-    margin-bottom: 1rem;
-    color: #555;
+    transition: transform var(--transition-fast);
+  }
+  .item img:hover {
+    transform: scale(1.02);
+  }
+  
+  /* 8. Descrição de Consumo */
+  .item p {
+    margin-bottom: var(--spacing-medium);
+    color: #555555;
     font-size: 0.95rem;
     text-align: center;
-}
-
-.item > section {
+  }
+  
+  /* 9. Área de Controle */
+  .item > section {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-}
-
-.item input[type="number"] {
+    gap: var(--spacing-small);
+  }
+  
+  .item input[type="number"] {
     width: 100%;
     padding: 0.6rem;
     font-size: 1rem;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: #eee;
+    border: 1px solid var(--color-border);
+    background-color: #eeeeee;
     text-align: center;
-}
-
-.item > section > section {
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+  .item input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+  }
+  
+  /* 10. Botões +/- */
+  .item > section > section {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: var(--spacing-medium);
     width: 100%;
-}
-
-.item button {
+  }
+  
+  .item button {
     flex: 1;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     font-size: 1rem;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--color-secondary);
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-main > button {
-    margin-top: 2rem;
-    padding: 0.8rem 2rem;
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  .item button:hover {
+    background-color: var(--color-secondary-hover);
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item button:focus {
+    outline: 2px solid var(--color-primary);
+  }
+  
+  /* 11. Botão “Salvar” fixo ao fim da página */
+  main > button {
+    position: fixed;
+    bottom: var(--spacing-large);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.9rem 2.5rem;
     font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
-    background-color: #007BFF;
+    background-color: var(--color-button-bg);
+    color: #ffffff;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    align-self: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
-}
-
-main > button:hover {
-    background-color: #0056b3;
-    transform: scale(1.03);
-}
-
-main > button:active {
+    transition: background-color var(--transition-medium), transform var(--transition-fast), box-shadow var(--transition-fast);
+    z-index: 100;
+    max-width: calc(100vw - 2rem); /* Garante que não ultrapasse a largura da viewport */
+    width: auto;                  /* Ajusta conforme o texto */
+  }
+  
+  main > button:hover {
+    background-color: var(--color-button-hover);
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 123, 255, 0.3);
+  }
+  
+  main > button:focus {
+    outline: 2px solid var(--color-primary);
+  }
+  
+  main > button:active {
     transform: scale(0.98);
-}
-.item button:hover {
-    background-color: #45a049;
-}
-
-@media (max-width: 1024px) {
-    main {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        padding: 1rem;
-    }
-
-    .item {
-        padding: 1rem;
-    }
-
-    .item img {
-        max-height: 160px;
-    }
-}
-
-@media (max-width: 480px) {
+  }
+  
+  /* 12. Responsividade + Ajustes Finais */
+  @media (max-width: 1024px) {
     body {
-        padding: 1rem;
+      padding: 1.5rem;
     }
-
+  
     main {
-        grid-template-columns: 1fr;
+      flex-direction: column;
+      padding: var(--spacing-medium);
+      padding-bottom: calc(var(--spacing-large) + 4rem); /* espaço para o botão fixo */
     }
-
+  
+    main > section {
+      padding: var(--spacing-medium);
+    }
+  
+    .item {
+      padding: var(--spacing-medium);
+      max-width: 100%; /* ocupa toda a largura do container */
+      max-height: none; /* libera altura em telas médias, se quiser */
+    }
+  
     .item img {
-        max-height: 140px;
+      max-height: 160px;
     }
-
+  }
+  
+  @media (max-width: 600px) {
+    body {
+      padding: 1rem;
+    }
+  
+    main > section h2 {
+      font-size: 1.6rem;
+      margin-bottom: var(--spacing-medium);
+    }
+  
+    .item img {
+      max-height: 140px;
+    }
+  
     .item button {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
     }
-
+  
     .item input[type="number"] {
-        font-size: 0.9rem;
+      font-size: 0.9rem;
     }
-}
+  
+    main > button {
+      bottom: var(--spacing-medium);
+      max-width: calc(100vw - 2rem);
+      padding: 0.7rem 1rem;
+    }
+  }
+  
