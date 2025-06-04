@@ -1,9 +1,8 @@
 import { SalvarFirebase } from "./comunicacao.js";
-let consumo = [0, 0, 0, 0, 0,0,0,0,0];
+let consumo = [0, 0, 0, 0, 0,0,0,0,0,0];
 
 const equipamentos = [
     { nome: "TV", index: 0, consumo: 13.5 },
-    { nome: "Motor", index: 1, consumo: 1500 },
     { nome: "LED", index: 2, consumo: 100 },
     { nome: "Compressor", index: 3, consumo: 3000 },
     { nome: "Camara", index: 4, consumo: 5000 },
